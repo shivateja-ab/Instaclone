@@ -1,0 +1,32 @@
+.post{
+    width:500px;
+    border:2px solid lightgray;
+    border-style: ridge;
+    border-radius: 5px;
+    margin-top: 30px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.image{
+    width:100%;
+
+}
+h3{
+    margin-left: 5px;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    color:darkslategrey
+
+}
+h4{ 
+    margin-left: 6px;
+    margin-top: -10px;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+
+}
+.heart {
+    margin-top:-25px;
+    margin-left: 5px;
+    size: 15px;
+}
