@@ -1,6 +1,7 @@
 const express=require("express");
 const Post=require("../model/post");
 const router=express.Router();
+
 router.get('/',async function(req,res){
     try{
         const posts=await Post.find();
@@ -20,8 +21,8 @@ router.get('/',async function(req,res){
 
 router.post('/',async function(req,res){
     try{
-        const {title,body,image}=req.body;
-        const post= await Post.create( {user:req.user,title, body, image});
+        const {name,description,image,location}=req.body;
+        const post= await Post.create( {user:req.user,name, description, image, location});
         res.json({
             status:"success",
             data:{
@@ -38,7 +39,7 @@ router.post('/',async function(req,res){
 
 router.put('/:id',async function(req,res){
     try{
-        const {title,body,image}=req.body;
+        const {name,description,image}=req.body;
         const post = await Post.findOne({_id:req.params.id});
         if(!post){
             return res.status(404).json({
@@ -57,14 +58,14 @@ router.put('/:id',async function(req,res){
                 image
             });
         }
-        if(title){
+        if(name){
             await Post.updateOne({_id:req.params.id},{
-                title
+                name
             });
         }
-        if(body){
+        if(description){
             await Post.updateOne({_id:req.params.id},{
-                body
+                description
             });
         }
         
@@ -82,7 +83,7 @@ router.put('/:id',async function(req,res){
 
 router.delete('/:id',async function(req,res){
     try{
-        const {title}=req.body;
+        const {name}=req.body;
         const post = await Post.findOne({_id:req.params.id});
         if(!post){
             return res.status(404).json({
@@ -107,5 +108,55 @@ router.delete('/:id',async function(req,res){
         })
     }
 })
+router.put('/:id/like',async function (req,res){
+    try{
+        const {Id}=req.body;
+    const post=await Post.findOne({_id:req.params.id});
+    if(!post){
+        res.json({
+            status:"failed",
+            message:"post not found"
+        })
+    }
+    await Post.updateOne({_id:req.params.id},{$push:{likedusers:Id}},{new:true});
+    res.json({
+        status:"success",
+        data:{
+            post
+        }
+    })
+    }catch(e){
+        res.json({
+            status:"failed",
+            message:e.message
+        })
+    }
+})
+
+router.put('/:id/unlike',async function (req,res){
+    try{
+        const {Id}=req.body;
+    const post=await Post.findOne({_id:req.params.id});
+    if(!post){
+        res.json({
+            status:"failed",
+            message:"post not found"
+        })
+    }
+    await Post.updateOne({_id:req.params.id},{$pull:{likedusers:Id}},{new:true});
+    res.json({
+        status:"success",
+        data:{
+            post
+        }
+    })
+    }catch(e){
+        res.json({
+            status:"failed",
+            message:e.message
+        })
+    }
+})
+
 
 module.exports=router;

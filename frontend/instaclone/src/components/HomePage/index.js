@@ -2,6 +2,7 @@ import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { setToken } from "../../utils/authOperations";
 import "./index.css";
+import image from './homepic.png';
 
 
 function HomePage(){
@@ -35,17 +36,16 @@ function HomePage(){
 
 
     return <div className="Homepage">
-        < div className="form">
+        <div className='homescreenimg'><img className='homeimg' src={image} alt='homepic'></img></div>
+        < div className='formscreen'>
             <form onSubmit={e=>{login(e)}}>
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" />
                 <label htmlFor="password">Password</label>
                 <input name="password" type="password" />
-                <Button type="submit" className='btn'>Login</Button>
+                <Button type="submit" className='loginbtn'>Login</Button>
+                <Link to='/register'> Not a member? register here </Link>
             </form>
-        </div>
-        <div className='link'>
-            <Link to='/register'> Not a member? register here </Link>
         </div>
     </div>
 };

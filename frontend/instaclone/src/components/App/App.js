@@ -11,15 +11,18 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route exact path='/' component={Homepage}/>
-        <PrivateRoute exact path = '/posts' component={Posts}/>
+        <Route exact path='/' component={Homepage} />
+        <PrivateRoute exact path = '/posts' component={Posts} />
         <Route exact path='/register' component={RegisterPage} />
         <Route exact path = '/addpost' component={Addpost} />
-        <Route exact path = '/update' component={Updatepost}/>
-        <Route exact path = '/delete' component={Deletepost}/>
+        <Route exact path = '/update' component={Updatepost} />
+        <Route exact path = '/delete' component={Deletepost} />
       </Switch>
     </Router>
   );
 }
 
 export default App;
+
+
+

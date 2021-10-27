@@ -1,5 +1,6 @@
 import { getToken } from "../../utils/authOperations";
 import {useLocation,useParams} from "react-router";
+import './index.css'
 function Deletepost(){
     const location = useLocation();
     const id=location.state.userid._id
@@ -27,9 +28,9 @@ function Deletepost(){
         }
         
     return <div>
-        <div>
-        <button onClick={()=>{Delete()}}>yes</button>
-        <button onClick={()=>{window.location.href='/posts'}}>no</button>
+        <div className="container">
+        <button className='choose' onClick={()=>{Delete()}}>yes</button>
+        <button className='choose' onClick={()=>{window.location.href='/posts'}}>no</button>
         </div>
     </div>
 }

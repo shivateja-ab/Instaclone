@@ -6,7 +6,7 @@ const mongoose=require("mongoose");
 const indexRoutes=require('./routes/index');
 const postRoutes=require('./routes/posts');
 const jwt = require('jsonwebtoken');
-mongoose.connect("mongodb://localhost/instaclone");
+mongoose.connect("mongodb://localhost/instaclonedata");
  
 app.use(cors());
 app.use('/posts',function(req,res,next){

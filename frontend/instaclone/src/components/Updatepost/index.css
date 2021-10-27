@@ -1,0 +1,29 @@
+.updateform{
+    margin-top: 229px;
+    margin-left: 400px;
+    width: 560px;
+    height: 210px;
+    
+    display: flex;
+    flex-direction: row;
+    padding: 25px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 25px;
+    border: 2px solid #006238;
+}
+input{
+    width: 100%;
+    line-height: 50px;
+}
+.updatebtn{
+    float: right;
+    color: #006238;
+    background-color: white;
+    border-color: #006238;
+
+}
+.updatebtn:hover {
+    background-color:#006238;
+    color: white;
+  }

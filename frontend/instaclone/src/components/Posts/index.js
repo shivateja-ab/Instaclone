@@ -2,8 +2,8 @@ import { useEffect, useState } from "react";
 import { getToken } from "../../utils/authOperations";
 import Post from "../Post";
 import "./index.css";
-import Header from "../Header";
 import {Link} from 'react-router-dom';
+import logo from './logoinsta.png';
 
 function Posts(){
     const [Posts,setPosts]=useState([]);
@@ -24,7 +24,7 @@ function Posts(){
             });
             const {data}= await response.json();
             console.log(data.posts);
-            setPosts(data.posts);
+            setPosts(data.posts.reverse());
             
 
         }catch(e){
@@ -32,11 +32,13 @@ function Posts(){
         };
 
     }
-    useEffect(()=>{ getData(); }, []);
+    useEffect(()=>{ getData(); }, []); //component did mount
 
     return (
         <div>
-            <Link to='/addpost'> add post </Link>
+            <div className='header'>
+                <div className='appname'><img className='logo' src={logo} alt='logo'></img><h3 className='instanature'>Instaclone</h3></div><Link to='/addpost'> <div className='camicon'><i className="fas fa-camera"></i></div> </Link>
+            </div>
             <div className="posts" >
                 {Posts.map(post=>
                   <Post key={post._id} {...post} />    

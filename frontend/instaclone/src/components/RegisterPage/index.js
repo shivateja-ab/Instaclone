@@ -1,6 +1,7 @@
 import {Button} from "react-bootstrap";
 import {Link} from "react-router-dom";
 import './index.css';
+import image from './homepic.png';
 
 function Registerpage(){
     const register = async e=>{
@@ -29,19 +30,19 @@ function Registerpage(){
         console.log(await response.json())
     }
 
-    return <div className="RegisterPage">
-        < div className="form">
+    return <div className="Registerpage">
+        <div className='regscreenimg'><img className='regimg' src={image} alt='regimg'></img></div>
+        < div className='regscreen'>
             <form onSubmit={e=>{register(e)}}>
                 <label htmlFor="name">Name</label>
-                <input type="text" name="name" />
+                <input type="name" name="name" />
                 <label htmlFor="email">Email</label>
                 <input type="email" name="email" />
                 <label htmlFor="password">Password</label>
                 <input name="password" type="password" />
-                <Button type="submit" className='btn'>Sign up</Button>
+                <Button type="submit" className='signupbtn'>SignUp</Button>
             </form>
         </div>
-       
     </div>
 
 }

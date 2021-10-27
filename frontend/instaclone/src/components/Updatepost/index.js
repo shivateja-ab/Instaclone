@@ -1,6 +1,7 @@
 import {Button} from "react-bootstrap";
 import { getToken } from "../../utils/authOperations";
 import {useLocation,useParams} from "react-router";
+import './index.css';
 function Updatepost(){
     const location = useLocation();
     const id=location.state.userid._id
@@ -23,24 +24,18 @@ function Updatepost(){
                 redirect: 'follow', // manual, *follow, error
                 referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
                 body: JSON.stringify({
-                    title:e.target.title.value,
-                    body:e.target.body.value,
-                    image:e.target.image.value,
+                    description:e.target.description.value,
                 })// body data type must match "Content-Type" header
                 
             });
             console.log(await response.json())
         }
     return <div className="Updatepost">
-        < div className="form">
+        < div className="updateform">
             <form onSubmit={e=>{post(e)}}>
-                <label htmlFor="title">Title</label>
-                <input type="text" name="title" />
-                <label htmlFor="body">Body</label>
-                <input name="body" type="text" />
-                <label htmlFor="image">Image</label>
-                <input name="image" type="text" />
-                <Button type="submit" className='btn'>Submit</Button>
+                <label htmlFor="description">description</label>
+                <input name="description" type="text" />
+                <Button type="submit" className='updatebtn'>Update post</Button>
             </form>
         </div>
     </div>
